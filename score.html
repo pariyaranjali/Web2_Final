@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Web Programming 2 - Final Project</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<!-- header section -->
+  <div class="header">
+  	<img src="img/img1.jpg" onmouseover="mouseHover(this)" onmouseout="mouseOut(this)">
+  	<div class="nav">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="score.html">Score</a></li>
+			<li><a href="shop.html">Shop</a></li>
+			<li><a href="jsworld.html">Js World</a></li>
+			<li><a href="form.html">Form</a></li>
+			<li><a href="map.html">Map</a></li>
+			<li><a href="animation.html">Animation</a></li>
+		</ul>
+  	</div>
+  </div> 
+<!-- body section -->
+  <div class="container">
+	<h1 class="main-heading"> Student Score</h1>
+     <div id="score"> 
+      </div>
+  </div> <!-- Main container end -->
+ 
+ <!-- footer section -->
+  <div class="footer">
+    <p>Copyright © 2023 Anjali Pariyar. All rights reserved.</p>
+  </div>
+
+ <script type="text/javascript" src="script.js"></script>
+ <script>
+	
+// script for score
+score = document.getElementById('score');
+ var studentsName = ["Wang","Chen","Zhao","Liu","Yamamoto","Tanaka"];
+    var studentsScore = [80,75,92,60,91,82];
+    var totalScore = 0;
+    var avgScore;
+score.innerHTML = '<h3>1. There are six Students. Their name and scores are as follows.</h3><br>';
+score.innerHTML += '<b>Name</b> <b>Score</b><br>';
+
+    for(i=0;i<studentsName.length;i++){
+
+    	
+    	score.innerHTML += studentsName[i] + "  "+ studentsScore[i] + "<br>";
+    	 }
+score.innerHTML += '<h3>2. The following students are students who can get A.</h3><br>';
+
+for(i=0;i<studentsScore.length;i++){
+   	//use if conditon two check the number of students whose score are greater than 90.
+      if(studentsScore[i]>90){
+   
+      	score.innerHTML += studentsName[i] +" "+studentsScore[i] +"<br>";
+      }
+    }
+ for(i=0;i<studentsScore.length;i++){
+     	// calculating total score
+     	totalScore = totalScore+ studentsScore[i];
+     }
+     avgScore = totalScore/studentsScore.length;
+
+     
+ score.innerHTML += "<br><br><h3>Total score is "+totalScore+ "</h3>";
+  score.innerHTML += "<h3>The Avagrage score is "+avgScore+ "</h3><br>";
+
+ score.innerHTML += "<h3> 3. Sort score in descending order<br></h3>";
+    for(i=0;i<studentsScore.length;i++){
+    	for(j= i+1;j<studentsScore.length;j++){
+    		//In this condition we compare currrent i index studetn score to  j index student score("j index is initialzie from the current i index value and repeat until the lenght of the total students")  and if the current i index student score less than the any j index studetn score we swipe the value for the help of temscore varibale. we do same to swipe student name. 
+    		if(studentsScore[i]<studentsScore[j]){
+           //swipe student score
+    			tempScore = studentsScore[i];
+    			studentsScore[i]= studentsScore[j];
+    			studentsScore[j] = tempScore;
+
+    		//Swipe student name
+    			tempName = studentsName[i];
+    			studentsName[i]= studentsName[j];
+    			studentsName[j] = tempName;
+            
+    		}
+       
+    	}
+    	score.innerHTML += studentsName[i]+"  "+studentsScore[i]+"<br>";
+    }
+
+//end of score script
+
+ </script>
+</body>
+</html>
